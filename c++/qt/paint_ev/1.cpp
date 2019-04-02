@@ -7,10 +7,11 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QDebug>
+#include <QKeyEvent>
 
 using namespace std;
 using namespace Qt;
-
+/*
 class ball
 {
 private:
@@ -23,13 +24,15 @@ public:
 	}
 	
 };
-
+*/
 class myw: public QWidget
 {
 public:
 	myw(QWidget* p=0);
 	~myw(){}
-	void paintEvent(QPaintEvent*);
+	void paintEvent(QPaintEvent*) override;
+	void resizeEvent(QResizeEvent*) override;
+	void keyPressEvent(QKeyEvent *event) override;
 private:
 	QTimer *time;
 	QRect ball;
@@ -47,15 +50,25 @@ int main(int argc, char** argv)
 void myw::paintEvent(QPaintEvent* event)
 {
 	QPainter paint(this);
-	ball = QRect(width()/2, height()/2, width()/4, height()/4);
+	//ball = QRect(width()/2, height()/2, width()/4, height()/4);
 
 	paint.setPen(QPen(black, 5, SolidLine)); 
 	paint.setBrush(QBrush(red, DiagCrossPattern));
 	paint.drawEllipse(ball);
 }
+void myw::resizeEvent(QResizeEvent*)
+{
+	ball.setSize(size()/8);
+}
+void myw::keyPressEvent(QKeyEvent *event)
+{
+	qDebug() <<event->key();
+	if((Key_Left==event->key()) && (ball.x()<ball.width()/2)){ ball.setX(ball.x()-1); update(); return;}
+	else if((Key_Right==event->key()) && (ball.x()<width())){ ball.setX(ball.x()+1); update(); return;}
+}
 myw::myw(QWidget* p):QWidget(p)
 {
 	time = new QTimer(this);
 	time->start();
-	ball = QRect(width()/2, height()/2, width()/8, height()/8);
+	ball = QRect(QPoint(), size()/8);
 }
