@@ -34,6 +34,8 @@ int main(int argc, char** argv)
 	//QFile fl;
 	//fl.setFileName(FILE);
 	qDebug() <<"FIle exists: " <<QFile::exists(FILE);
+	qDebug() <<dynamic_cast<QWidget*>(&w);
+	qDebug() <<sizeof(QWidget) <<sizeof(QString) <<sizeof(QPushButton);
 	return a.exec();
 }
 void myw::paintEvent(QPaintEvent* event)
@@ -43,7 +45,8 @@ void myw::paintEvent(QPaintEvent* event)
 	QPainter paint(this);
 	paint.setPen(QPen(black, 5, SolidLine)); 
 	paint.setBrush(QBrush(red, DiagCrossPattern));
-	QRect rect(0, 0, 256, 256);
+	QRect rect(0, 0, width(), height());
+//	QRect &rect = rect();
 	paint.drawImage(rect, img);
 	paint.drawRect(20, 20, 100, 60);
 };

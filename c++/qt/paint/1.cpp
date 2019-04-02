@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	QMessageBox msg(&w);
 	msg.setWindowTitle("Message Title");
 	msg.setText("Warning, you are terminated...");
-	QMessageBox::aboutQt(&w);
+//	QMessageBox::aboutQt(&w);
 	bmsg.show();
 	w.resize(200, 200);
 	w.show();

@@ -17,7 +17,7 @@ public:
 		cout <<"class A destroyed" <<endl;
 	a = 0;
 	}
-	void size()
+	virtual void size()
 	{
 		cout <<sizeof(A) <<endl;
 	}
@@ -30,7 +30,7 @@ public:
 		a = _a;
 	}
 };
-class B: public A
+class B: A
 {
 public:
 	B()
@@ -43,7 +43,7 @@ public:
 
 		cout <<"class B destroyed" <<endl;
 	}
-	void size()
+	void size(int a) 
 	{
 		cout <<sizeof(B) <<endl;
 	}
@@ -52,24 +52,8 @@ public:
 };
 int main()
 {
-	/*
 	A a;
-	a.size();
-	a.get();
-	a.set(11);
-	*/
-
-	
-	A* aa = new A;
-	aa->size();
-	aa->get();
-	aa->set(11);
-	delete aa;
-
-	/*	
 	B b;
-	b.size();
-*/	
 
 	return 0;
 

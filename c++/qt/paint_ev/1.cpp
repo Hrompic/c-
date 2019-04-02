@@ -21,7 +21,7 @@ public:
 	{
 	
 	}
-
+	
 };
 
 class myw: public QWidget
@@ -32,6 +32,7 @@ public:
 	void paintEvent(QPaintEvent*);
 private:
 	QTimer *time;
+	QRect ball;
 };
 int main(int argc, char** argv)
 {
@@ -46,12 +47,15 @@ int main(int argc, char** argv)
 void myw::paintEvent(QPaintEvent* event)
 {
 	QPainter paint(this);
+	ball = QRect(width()/2, height()/2, width()/4, height()/4);
+
 	paint.setPen(QPen(black, 5, SolidLine)); 
 	paint.setBrush(QBrush(red, DiagCrossPattern));
-	paint.drawEllipse(20, 20, 100, 60);
+	paint.drawEllipse(ball);
 }
 myw::myw(QWidget* p):QWidget(p)
 {
 	time = new QTimer(this);
 	time->start();
+	ball = QRect(width()/2, height()/2, width()/8, height()/8);
 }
