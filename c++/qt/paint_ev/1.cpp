@@ -62,9 +62,11 @@ void myw::resizeEvent(QResizeEvent*)
 }
 void myw::keyPressEvent(QKeyEvent *event)
 {
-	qDebug() <<event->key();
-	if((Key_Left==event->key()) && (ball.x()<ball.width()/2)){ ball.setX(ball.x()-1); update(); return;}
-	else if((Key_Right==event->key()) && (ball.x()<width())){ ball.setX(ball.x()+1); update(); return;}
+	static int h = 0;
+	qDebug() <<event <<ball;
+	if((Key_Left==event->key()) ){ ball.moveLeft(--h); update(); return;}
+	//else if((Key_Right==event->key()) && (ball.x()<width())){ ball.moveLeft(1); update(); return;}
+	else if((Key_Right==event->key()) ){ ball.moveLeft(h); update(); h++; return;}
 }
 myw::myw(QWidget* p):QWidget(p)
 {
