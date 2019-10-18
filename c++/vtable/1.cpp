@@ -7,8 +7,7 @@ private:
 	long a;
 public:
 	A(){a = 50;}
-	//virtual 
-	void dump()
+	virtual	void dump()
 	{
 	cout <<a <<endl;
 	}

@@ -1,12 +1,15 @@
 #include <QThread>
 #include <QWidget>
-
+#include <QApplication>
 class th: public QThread
 {
 
 };
-int main()
+int main(int argc, char** argv)
 {
-	QWidget wg()
+	QApplication app(argc, argv);	
+	QWidget wg;
+	wg.show();
+	app.exec();
 
 }

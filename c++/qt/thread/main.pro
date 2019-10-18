@@ -1,3 +1,3 @@
 SOURCES += 1.cpp
-CONFIG += debug
+##CONFIG += debug
 QT += widgets core gui
