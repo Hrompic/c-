@@ -51,7 +51,7 @@ int main()
 {
 	vector<Prototype*> items;
 	Item Item("Concrete Item");
-
+	print(dynamic_cast<Prototype*> (&Item));
 	// клонуємо об'єкт
 	for (int i = 0; i < 10; ++i)
 	{
