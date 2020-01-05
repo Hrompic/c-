@@ -55,14 +55,8 @@ int main()
 	// клонуємо об'єкт
 	for (int i = 0; i < 10; ++i)
 	{
-		items.push_back
-		(
-			Item.Clone() // виклик методу клонування
-		);
+		items.push_back(Item.Clone());
 	}
 	// Друкуємо клонів
-	for (int i = 0; i < 10; ++i)
-	{
-		print(items[i]);
-	}
+	for (int i = 0; i < 10; ++i) print(items[i]);
 }
